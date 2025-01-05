@@ -1,132 +1,52 @@
-# Flutter Flavor with FVM
+# E-Office Flutter Project
 
-A Flutter project using FVM (Flutter Version Management) and Flavor for managing development and production environments.
+This project is built using Flutter 3.22.2. The application leverages Flutter's capabilities to deliver a cross-platform mobile experience with a focus on efficiency and performance.
 
-## Prerequisites
+## Technologies Used
 
-- [Flutter](https://flutter.dev/docs/get-started/install)
-- [FVM](https://fvm.app/docs/getting_started/installation)
-- [CocoaPods](https://cocoapods.org/) for iOS development
-- Xcode for iOS development
-- Android Studio for Android development
+- **Flutter**: Version 3.22.2, the primary framework for building the application.
+- **NDK**: Version 23, the primary framework for building the application.
+- **Dart**: The programming language used in Flutter for development.
+- **Build Runner**: Used for code generation, such as creating model classes, JSON serialization, and other code based on annotations.
 
-## Setup Project
+## Getting Started
 
-Clone the repository and install dependencies:
+### Prerequisites
 
-```bash
-git clone https://github.com/bindok1/flutter-flavor-fvm.git
-cd flutter-flavor-fvm
-fvm install
-fvm flutter pub get
-cd ios
-pod install
-cd ..
-```
+Ensure you have the following installed:
 
-## Flavors
+- Flutter 3.22.2: [Installation Guide](https://flutter.dev/docs/get-started/install)
+- Dart SDK: Included with Flutter installation.
 
-This project has two flavors: `dev` (development) and `prod` (production). To run a specific flavor, use the following commands:
+### Installation
 
-### Development
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/bindok1/e-office.git
+   ```
+2. Get the dependencies:
+   ```bash
+   flutter pub get
+   ```
+3. Code Generation with Build Runner
+   This project uses Build Runner for code generation tasks. Run the following commands to generate necessary files:
+   ```bash
+   flutter run build_runner build --delete-conflicting-outputs
+   ```
+   Or alternatively, using Dart:
+   ```bash
+   dart run build_runner build --delete-conflicting-outputs
+   ```
 
-```bash
-fvm flutter run --flavor dev
-```
+### Building the Application
 
-### Production
-
-```bash
-fvm flutter run --flavor prod
-```
-
-Alternatively, in VS Code, select the appropriate launch configuration:
-
-- `debug-dev`
-- `debug-prod`
-- `release-dev`
-- `release-prod`
-
-## Project Structure
-
-```plaintext
-your_project/
-├── .vscode/ # VS Code configurations
-│   └── launch.json # Launch configurations for flavors
-├── ios/
-│   ├── Runner/
-│   │   └── Config/ # iOS flavor configurations
-│   │       ├── dev.xcconfig
-│   │       ├── prod.xcconfig
-│   │       ├── debug-dev.xcconfig
-│   │       ├── debug-prod.xcconfig
-│   │       ├── release-dev.xcconfig
-│   │       └── release-prod.xcconfig
-│   └── Podfile
-└── pubspec.yaml
-```
-
-## iOS Configuration
-
-### Bundle IDs
-
-- Development: `com.example.base_2.dev`
-- Production: `com.example.base_2`
-
-### Display Names
-
-- Development: `Base 2 DEV`
-- Production: `Base 2`
-
-## VS Code Launch Configurations
-
-The project includes the following launch configurations for flavors:
-
-- `debug-dev`
-- `debug-prod`
-- `release-dev`
-- `release-prod`
-
-## Troubleshooting
-
-### iOS Build Issues
-
-1. Clean the build:
-
-    ```bash
-    flutter clean
-    cd ios
-    pod deintegrate
-    pod install
-    ```
-
-2. Reset Xcode:
-   - Clean Build Folder (`Cmd + Shift + K`)
-   - Delete Derived Data
-
-### FVM Issues
-
-1. Verify FVM installation:
-
-    ```bash
-    fvm doctor
-    ```
-
-2. Reset FVM:
-
-    ```bash
-    fvm flutter clean
-    fvm flutter pub get
-    ```
-
-## Contributing
-
-1. Fork the repository.
-2. Create a feature branch.
-3. Commit your changes.
-4. Push to the branch.
-5. Create a Pull Request.
-
-## License
-
-This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
+1. Build App Bundle
+   To create an App Bundle for distribution on the Google Play Store, use the following command:
+   ```bash
+   flutter build appbundle --release -t lib/main.dart
+   ```
+2. Build APK
+   To build the APK for testing or distribution, use the command below:
+   ```bash
+   flutter build apk --release -t lib/main.dart
+   ```
