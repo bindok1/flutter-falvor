@@ -1,6 +1,7 @@
 
 
 import 'package:base_2/core/constant/core_constant.dart';
+import 'package:base_2/shared/config/alice/alice.dart';
 import 'package:base_2/shared/config/http/app/app_exception.dart';
 import 'package:base_2/shared/config/http/interceptor/interceptor.dart';
 import 'package:base_2/shared/config/http/response/api_response.dart';

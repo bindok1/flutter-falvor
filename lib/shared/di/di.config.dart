@@ -10,6 +10,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:base_2/core/constant/core_module.dart' as _i705;
 import 'package:base_2/core/environtment/environtment.dart' as _i788;
+import 'package:base_2/shared/component/core_app.dart' as _i866;
+import 'package:base_2/shared/config/alice/alice.dart' as _i1016;
 import 'package:base_2/shared/config/http/http_util.dart' as _i1034;
 import 'package:flutter/material.dart' as _i409;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
@@ -32,7 +34,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => coreModule.navigatorKey);
     gh.lazySingleton<_i788.Environment>(() => _i788.Environment());
     gh.lazySingleton<_i558.FlutterSecureStorage>(() => coreModule.storage);
-    gh.lazySingleton<_i1034.HttpProvider>(() => _i1034.HttpProvider());
+    gh.singleton<_i1016.AppAlice>(
+        () => _i1016.AppAlice(gh<_i409.GlobalKey<_i409.NavigatorState>>()));
+    gh.singleton<_i866.Core>(
+        () => _i866.Core(gh<_i558.FlutterSecureStorage>()));
+    gh.lazySingleton<_i1034.HttpProvider>(
+        () => _i1034.HttpProvider(gh<_i1016.AppAlice>()));
     return this;
   }
 }

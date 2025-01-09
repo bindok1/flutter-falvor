@@ -4,6 +4,7 @@ enum ContentType { urlEncoded, json }
 
 @lazySingleton
 class HttpProvider {
+  late AppAlice _appAlice;
   late Dio _dio;
   
 
@@ -19,9 +20,10 @@ class HttpProvider {
 
   late List<Interceptor> _dioInterceptor;
 
-  HttpProvider() {
+  HttpProvider(this._appAlice) {
     _dio = Dio();
     _dioInterceptor = [
+      _appAlice.alice.getDioInterceptor(),
       PrettyDioLogger(requestHeader: true),
       RetryOnConnectionChangeInterceptor(
         requestRetrier: DioConnectivityRequestRetrier(

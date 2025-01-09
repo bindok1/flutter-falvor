@@ -1,16 +1,18 @@
-
 import 'package:base_2/shared/config/theme/app_font.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
   // Define your colors as constants to reuse across the app
-  static const Color scaffoldBgColor = Color(0xFFF4EEEF);
-  static const Color primaryColor = Color(0xFFEA4B0B);
+  static const Color scaffoldBgColor = Colors.white;
+  static const Color foregroundColor = Colors.white;
+  static const Color accentColor = Color(0xFFECF1FC);
+  static const Color primaryColor = Color(0xFF3D73DD);
   static const Color secondaryColor = Color(0xFFFFB640);
   static const Color starColor = Color(0xffFFB139);
   static const Color darkColor = Color(0xFF2F180A);
   static const Color textColorBlack = Color(0xFF1C1818);
-  static const Color textColorGrey = Color(0xFF9499AE);
+  static const Color textFieldHintColor = Color(0xFF83A4E6);
+  static const Color textColorGrey = Color(0xFFB0B1B3);
   static const Color customBlackColor = Color(0xFF421608);
   static const Color iconBlack = Color(0xFF1C1818);
 
@@ -69,7 +71,7 @@ class AppTheme {
       ),
       titleSmall: AppFontExtension.plusJakartaSans(
         fontSize: 18.0 * textScaleFactor,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.normal,
         color: textColorBlack,
       ),
       bodyLarge: AppFontExtension.roboto(

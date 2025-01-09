@@ -11,4 +11,5 @@ abstract class CoreModule {
   FlutterSecureStorage get storage => const FlutterSecureStorage();
 
 
+
 }
